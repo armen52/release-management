@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ReleaseManagement</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container_12">
+  <%= yield %>
+</div>
+<%= debug(params) if Rails.env.development? %>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @component.name %>
+</p>
+
+<b>Category:</b>
+<ul>
+  <% @component.categories.each do |category| %>
+    <li><%= category.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_component_path(@component) %> |
+<%= link_to 'Back', components_path %>

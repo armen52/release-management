@@ -1,0 +1,28 @@
+<%= form_for(@release) do |f| %>
+  <% if @release.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@release.errors.count, "error") %> prohibited this release from being saved:</h2>
+
+      <ul>
+      <% @release.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= hidden_field_tag "release[component_ids][]", nil %>
+    <% Component.all.each do |component| %>
+      <%= check_box_tag "release[component_ids][]", component.id, @release.component_ids.include?(component.id), id: dom_id(component) %>
+      <%= label_tag dom_id(component), component.name %><br>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
