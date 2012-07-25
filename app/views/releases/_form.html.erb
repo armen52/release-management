@@ -11,18 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="release">
+    <div class="field">
+      <div class="labelWrapper"><%= f.label :name %>:</div>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <div class="labelWrapper"><%= f.label :description %>:</div>
+      <%= f.text_area :description, placeholder: 'optional' %>
+    </div>
+    <div class="field">
+      <div class="labelWrapper"><%= f.label :component_ids, 'Components' %>:</div>
+      <%= f.collection_select :component_ids, Component.order(:name), :id, :name, {}, {multiple: true} %>
+
+    </div>
   </div>
-  <div class="field">
-    <%= hidden_field_tag "release[component_ids][]", nil %>
-    <% Component.all.each do |component| %>
-      <%= check_box_tag "release[component_ids][]", component.id, @release.component_ids.include?(component.id), id: dom_id(component) %>
-      <%= label_tag dom_id(component), component.name %><br>
-    <% end %>
+  <div class="releaseControls">
+    <div class="actions">
+      <%= link_to raw('&larr; Back to releases'), releases_path, :class => 'custom-button' %>
+      <%= f.submit 'Save Release', :class => 'custom-button' %>
+    </div>
+    <div class="clear"></div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>

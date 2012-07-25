@@ -1,6 +1,6 @@
 .releaseWrapper {
   border: 1px solid #D7D7D7;
-  margin: 10px;
+  margin: 10px 0;
 }
 .release {
   padding: 10px 10px;
@@ -26,4 +26,19 @@
 }
 .releaseComponentContainer {
   font-size: 0.8em;
+}
+#release_description {
+  /*width: 300px;*/
+  height: 150px;
+  resize: none;
+}
+.release .labelWrapper {
+  float: left;
+  margin-right: 10px;
+  display: inline-block;
+  text-align: right;
+  width: 150px;
+}
+#release_component_ids {
+  width: 412px;
 }

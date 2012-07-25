@@ -1,6 +1,7 @@
-<h1>Editing release</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @release %> |
-<%= link_to 'Back', releases_path %>
+<div class="grid_8 releaseWrapper">
+  <div class="releaseContainer">
+      <div class="releaseTitle">Editing <%= @release.name %></div>
+      <%= render 'form' %>
+  </div>
+</div>
+<div class="clear"></div>

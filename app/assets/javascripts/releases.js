@@ -3,6 +3,7 @@
   $(document).ready(function() {
     initMarkAsCompleteButtons();
     initRevertButtons();
+    $('#release_component_ids').chosen();
   });
 
   function initRevertButtons() {

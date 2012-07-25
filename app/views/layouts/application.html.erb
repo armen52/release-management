@@ -7,9 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container_12">
-  <%= yield %>
-</div>
+  <div id="nav">
+    <div class="container_12">
+    <a href="/" class="custom-button">Home</a>
+    <a href="/releases/new" class="custom-button" style="margin-right: 50px;">New Release</a>
+    <a href="/components" class="custom-button">Component List</a>
+    <a href="/components/new" class="custom-button" style="margin-right: 50px;">New Component</a>
+    <a href="/categories" class="custom-button">Category List</a>
+    <a href="/categories/new" class="custom-button">New Category</a>
+    <div class="clear"></div>
+    </div>
+  </div>
+
+  <div class="container_12 main">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
