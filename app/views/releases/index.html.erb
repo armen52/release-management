@@ -1,22 +1,36 @@
-<h1>Releases</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h4>Releases</h4>
 
 <% @releases.each do |release| %>
-  <tr>
-    <td><%= release.name %></td>
-    <td><%= link_to 'Show', release %></td>
-    <td><%= link_to 'Edit', edit_release_path(release) %></td>
-    <td><%= link_to 'Destroy', release, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <div class="grid_7 releaseWrapper">
+    <div class="releaseContainer">
+      <% if release.status == 1 %>
+        <div class="releaseTitle releaseComplete" id="release-title-<%= release.id %>"><%= link_to release.name, edit_release_path(release) %></div>
+      <% else %>
+        <div class="releaseTitle" id="release-title-<%= release.id %>"><%= link_to release.name, edit_release_path(release) %></div>
+      <% end %>
+      <div class="release">
+
+        <div class="releaseComponentContainer">
+          <ul>
+            <% release.components.each do |component| %>
+              <li><%= component.name %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="releaseControls">
+        <% if release.status == 0 %>
+          <button class="custom-button mark-complete-button" id="mark-complete-<%= release.id %>" data-release-id="<%= release.id %>">Mark as complete</button>
+        <% else %>
+          <button class="custom-button revert-status" id="revert-<%= release.id %>" data-release-id="<%= release.id %>">Revert</button>
+        <% end %>
+        <%= button_to 'Delete', release, method: :delete, data: { confirm: 'Are you sure?' }, class: "custom-button" %>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
 <% end %>
-</table>
 
 <br />
 

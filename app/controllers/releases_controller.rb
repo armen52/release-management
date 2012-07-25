@@ -57,9 +57,12 @@ class ReleasesController < ApplicationController
   # PUT /releases/1.json
   def update
     @release = Release.find(params[:id])
-
     respond_to do |format|
-      if @release.update_attributes(params[:release])
+      if request.format.json? # check to see if an ajax call is being made
+        if @release.update_attribute('status', params[:status])
+          format.json { head :no_content }
+        end
+      elsif @release.update_attributes(params[:release])
         format.html { redirect_to @release, notice: 'Release was successfully updated.' }
         format.json { head :no_content }
       else
